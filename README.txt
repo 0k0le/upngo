@@ -7,3 +7,12 @@ Version 1.0:
 BUILD:
 	make release
 	sudo make install
+
+Details:
+	upngo project creation utility will copy the project skeleton in /etc/upngo
+
+File template variables:
+	*PRJNAME* = Project Name
+
+Usage:
+	upngo <PROJECT_NAME>

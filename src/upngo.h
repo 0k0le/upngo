@@ -1,5 +1,5 @@
 // upngo source linkage...
-#include "types.h" 
+#include "upngo_types.h" 
 
 extern BOOL init_upngo(p_upngo_info project_info, CCCSTR c_strProjectName);
 extern void destroy_upngo(p_upngo_info project_info);
