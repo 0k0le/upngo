@@ -15,6 +15,5 @@
 #include <string.h> 	// Required by macros.h
 
 // Project specified
-#include "upngo_types.h"
 
 #endif
