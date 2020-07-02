@@ -1,22 +1,23 @@
-flags = -c -Wextra -Wall
-debugflags = -D_DEBUG
+# General compilation flags
+UNI_FLAGS = -Wextra -Wall
+VERSION = release
 
-compile-debug: src/main.c src/func.c
-	gcc src/main.c $(flags) $(debugflags) -o bin-int/main.o
-	gcc src/func.c $(flags) $(debugflags) -o bin-int/func.o
+# Src file locations
+SRC_DIR = src
+OBJ_DIR = bin-int/$(VERSION)
+#OBJ_FILES = $(OBJ_DIR)/main.o $(OBJ_DIR)/func.o
+SRC_FILES = $(SRC_DIR)/main.c $(SRC_DIR)/func.c
 
-compile-release: src/main.c src/func.c
-	gcc src/main.c $(flags) -o bin-int/main.o
-	gcc src/func.c $(flags) -o bin-int/func.o
+# App info
+APP_NAME = *PRJNAME*
+APP_DIR = bin/$(VERSION)
 
-release: compile-release
-	gcc bin-int/main.o bin-int/func.o -o bin/release/*PRJNAME*
+# Compiler
+CC = gcc
 
-debug: compile-debug
-	gcc bin-int/main.o bin-int/func.o -o bin/debug/*PRJNAME* 
+debug: VERSION = debug
+debug: UNI_FLAGS += -D_DEBUG
+all: $(SRC_FILES)
+	$(CC) $(SRC_FILES) $(UNI_FLAGS) -o $(APP_DIR)/$(APP_NAME) 
 
-install:
-	cp bin/release/*PRJNAME* /usr/bin
-
-clean:
-	rm -f  bin/debug/*PRJNAME* bin-int/main.o bin-int/func.o
+debug: all

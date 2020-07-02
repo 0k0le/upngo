@@ -33,4 +33,10 @@
 #define NULL ((void *)0)
 #endif
 
+typedef struct MAPS {
+	U64 start, end;
+	U32 offset, inode;
+	char perms[8], dev[8], pathname[1024];
+} maps, *pmaps;
+
 #endif
